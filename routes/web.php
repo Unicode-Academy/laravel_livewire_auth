@@ -20,5 +20,5 @@ Route::get('/', Index::class)->middleware('auth');
 
 Route::prefix('/auth')->group(function () {
     Route::get('/login', Login::class)->name('login');
-    Route::get('/register', Register::class);
+    Route::get('/register', Register::class)->name('register');
 });

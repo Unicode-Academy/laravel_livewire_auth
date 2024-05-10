@@ -35,8 +35,7 @@ class Login extends Component
         $status = Auth::attempt($credentials);
         if (!$status) {
             session()->flash('msg', 'Email hoặc mật khẩu không chính xác');
-            
-            return $this->redirect('/auth/login', true);
+            return;
         }
 
         return $this->redirect('/', true);

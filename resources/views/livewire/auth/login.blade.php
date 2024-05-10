@@ -15,5 +15,7 @@
             <span class="text-danger">@error('password') {{ $message }} @enderror</span>
         </div>
         <button class="btn btn-primary">Đăng nhập</button>
+        <hr>
+        <p class="text-center"><a href="{{route('register')}}" wire:navigate>Đăng ký tài khoản</a></p>
     </form>
 </div>
