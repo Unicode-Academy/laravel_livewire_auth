@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Title;
@@ -37,8 +38,9 @@ class Register extends Component
         $user = new User();
         $user->fill($data);
         $user->save();
+        event(new Registered($user));
         Auth::login($user);
-        return $this->redirect('/', true);
+        return $this->redirect('/email/verify', true);
     }
 
     public function render()
