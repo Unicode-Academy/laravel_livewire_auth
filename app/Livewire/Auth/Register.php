@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Auth;
 
-use App\Jobs\SendEmailVerify;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Title;
@@ -39,7 +39,8 @@ class Register extends Component
         $user->fill($data);
         $user->save();
         //Dispatch Queue
-        SendEmailVerify::dispatch($user);
+        // SendEmailVerify::dispatch($user);
+        event(new Registered($user)); //Gửi email
         Auth::login($user);
         return $this->redirect('/email/verify', true);
     }

@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Auth;
 
-use App\Jobs\ResendEmailVerify;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -25,8 +24,8 @@ class VerifyEmail extends Component
     }
     public function handleResendEmail()
     {
-        ResendEmailVerify::dispatch(Auth::user());
-
+        // ResendEmailVerify::dispatch(Auth::user());
+        Auth::user()->sendEmailVerificationNotification();
         $this->msg = 'Gửi email thành công. Vui lòng kiểm tra để kích hoạt';
     }
 }
