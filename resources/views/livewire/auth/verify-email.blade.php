@@ -8,4 +8,7 @@
             hoạt</button>
     </div>
     <p wire:loading>Đang gửi lại email. Vui lòng đợi</p>
+    @if ($msg)
+    <div class="alert alert-success my-2">{{$msg}}</div>
+    @endif
 </div>
