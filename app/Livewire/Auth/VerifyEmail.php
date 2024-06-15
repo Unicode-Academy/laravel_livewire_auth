@@ -20,7 +20,7 @@ class VerifyEmail extends Component
     }
     public function render()
     {
-        return view('livewire.auth.verify-email');
+        return view('livewire.auth.verify-email')->layout('components.layouts.auth');
     }
     public function handleResendEmail()
     {

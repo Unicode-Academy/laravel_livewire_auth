@@ -1,13 +1,14 @@
 <?php
 
-use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
-use App\Livewire\Auth\ResetPassword;
-use App\Livewire\Auth\VerifyEmail;
+use App\Livewire\Account\Account;
 use App\Livewire\Dashboard\Index;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Livewire\Auth\VerifyEmail;
+use App\Livewire\Auth\ResetPassword;
+use App\Livewire\Auth\ForgotPassword;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ Route::prefix('/auth')->group(function () {
     Route::get('/forgot-password', ForgotPassword::class)->name('forgot-password');
     Route::get('/reset-password/{token}', ResetPassword::class)->middleware('guest')->name('password.reset');
 });
+
+Route::get('account', Account::class)->name('account');
 
 Route::get('/email/verify', VerifyEmail::class)->middleware(['auth'])->name('verification.notice');
 
