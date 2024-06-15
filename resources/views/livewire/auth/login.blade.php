@@ -17,5 +17,6 @@
         <button class="btn btn-primary">Đăng nhập</button>
         <hr>
         <p class="text-center"><a href="{{route('register')}}" wire:navigate>Đăng ký tài khoản</a></p>
+        <p class="text-center"><a href="{{route('forgot-password')}}" wire:navigate>Quên mật khẩu</a></p>
     </form>
 </div>
