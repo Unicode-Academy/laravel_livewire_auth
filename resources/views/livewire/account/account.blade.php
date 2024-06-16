@@ -7,48 +7,9 @@
     </div>
     <div class="col-9">
         @if ($tab=='account')
-        <h2>Tài khoản</h2>
-        <table class="table table-bordered">
-            <tr>
-                <th width="20%">Tên</th>
-                <td>{{$user->name}}</td>
-                <td width="10%" class="text-center">
-                    <button class="btn btn-warning btn-sm">Sửa</button>
-                </td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{$user->email}}</td>
-                <td class="text-center">
-                    <button class="btn btn-warning btn-sm">Sửa</button>
-                </td>
-            </tr>
-            <tr>
-                <th>Thời gian đăng ký</th>
-                <td>{{$user->created_at}}</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Thời gian kích hoạt</th>
-                <td>{{$user->email_verified_at}}</td>
-                <td></td>
-            </tr>
-        </table>
+        <livewire:account.profile :user="$user" />
         @else
-        <h2>Đổi mật khẩu</h2>
-        <form action="">
-            <div class="mb-3">
-                <label for="">Mật khẩu</label>
-                <input type="password" name="password" class="form-control" placeholder="Mật khẩu..." wire:model="password" />
-                <span class="text-danger">@error('password') {{ $message }} @enderror</span>
-            </div>
-            <div class="mb-3">
-                <label for="">Nhập lại mật khẩu</label>
-                <input type="password" name="confirm_password" class="form-control" placeholder="Nhập lại mật khẩu..." wire:model="confirm_password" />
-                <span class="text-danger">@error('confirm_password') {{ $message }} @enderror</span>
-            </div>
-            <button class="btn btn-primary">Đổi mật khẩu</button>
-        </form>
+        <livewire:account.change-password />
         @endif
     </div>
 </div>
