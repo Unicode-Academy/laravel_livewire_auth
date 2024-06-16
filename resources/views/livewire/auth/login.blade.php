@@ -14,7 +14,10 @@
             <input type="password" name="password" class="form-control" placeholder="Email..." wire:model="password" />
             <span class="text-danger">@error('password') {{ $message }} @enderror</span>
         </div>
-        <button class="btn btn-primary">Đăng nhập</button>
+        <div class="d-grid">
+            <button class="btn btn-primary">Đăng nhập</button>
+        </div>
+        <livewire:auth.google-login />
         <hr>
         <p class="text-center"><a href="{{route('register')}}" wire:navigate>Đăng ký tài khoản</a></p>
         <p class="text-center"><a href="{{route('forgot-password')}}" wire:navigate>Quên mật khẩu</a></p>
