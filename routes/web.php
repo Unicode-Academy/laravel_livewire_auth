@@ -23,7 +23,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
  */
 
-Route::get('/', Index::class)->middleware(['auth', 'verified']);
+Route::get('/', Index::class)->middleware(['auth', 'checkDevice', 'verified']);
 
 Route::prefix('/auth')->group(function () {
     Route::get('/login', Login::class)->name('login');
@@ -36,9 +36,9 @@ Route::prefix('/auth')->group(function () {
 
 Route::get('account', Account::class)->name('account');
 
-Route::get('/email/verify', VerifyEmail::class)->middleware(['auth'])->name('verification.notice');
+Route::get('/email/verify', VerifyEmail::class)->middleware(['auth', 'checkDevice'])->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
     return redirect('/');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+})->middleware(['auth', 'checkDevice', 'signed'])->name('verification.verify');

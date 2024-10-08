@@ -35,6 +35,9 @@ class GoogleLogin extends Component
             ]
         );
         Auth::login($user);
+        $user = Auth::user();
+        $user->last_session_id = session()->getId();
+        $user->save();
         return $this->redirect('/', true);
     }
 
